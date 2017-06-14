@@ -5,6 +5,7 @@
 .App-title{font-size: 50px;}
 
 .Clock-days,.Clock-hours,.Clock-minutes,.Clock-seconds{display: inline-block;margin:10px;}
+.Deadline-input{font-size: 25px;margin: 5px;}
 .Clock-hours{}
 .Clock-minutes{}
 .Clock-seconds{}
