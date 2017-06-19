@@ -1,8 +1,24 @@
 import React, {Component} from 'react';
 import '../App.css';
-//import {FormGroup,FormControl,Button, InputGroup, Glyphicon} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class App extends Component {
+import { addReminder } from '../actions';
+
+//import {FormGroup,FormControl,Button, InputGroup, Glyphicon} from 'react-bootstrap';
+class App extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            text:''
+        }
+    }
+
+    addReminder(){
+        console.log('this state',this);
+    }
+
     render(){
         return (
             <div className="App">
@@ -14,11 +30,23 @@ export default class App extends Component {
                         <input
                             className="form-control"
                             placeholder="I have to..."
+                            onChange={event => this.setState({text: event.target.value})}
                         />
                     </div>
-                    <button className="btn btn-success">Add reminder</button>
+                    <button className="btn btn-success"
+                        onClick={() => this.addReminder()}
+                    >
+                        Add reminder
+                    </button>
                 </div>
             </div>
         )
     }
 }
+
+function mapDispatchToProps (dispatch) {
+    return bindActionCreators({addReminder},dispatch);
+}
+
+
+export default connect(null,mapDispatchToProps)(App);
