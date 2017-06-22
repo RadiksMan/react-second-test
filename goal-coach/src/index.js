@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 import { firebaseApp } from './firebase';
 
@@ -12,9 +12,11 @@ let routerRef = null;
 
 firebaseApp.auth().onAuthStateChanged(user => {
     if (user) {
-        console.log('user has signed in or up', user)
+        console.log('user has signed in or up', user);
+
     }else{
-        console.log('user has signed put or still needs to sign in.')
+        console.log('user has signed put or still needs to sign in.');
+
     }
 });
 
