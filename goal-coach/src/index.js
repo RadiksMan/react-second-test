@@ -8,6 +8,8 @@ import App from './components/App';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 
+let routerRef = null;
+
 firebaseApp.auth().onAuthStateChanged(user => {
     if (user) {
         console.log('user has signed in or up', user)
@@ -17,7 +19,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
 });
 
 ReactDOM.render(
-    <Router path="/">
+    <Router path="/" ref={ el => routerRef = el} >
         <div>
             <Route path="/app" component={App} />
             <Route path="/signin" component={SignIn} />
