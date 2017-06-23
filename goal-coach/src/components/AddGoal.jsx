@@ -1,25 +1,24 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { goalRef } from '../firebase';
 import { connect } from 'react-redux';
 
 class AddGoal extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            title:''
+            title: ''
         }
     }
 
-    addGoal(){
-        console.log('this',this);
+    addGoal() {
+        console.log('this', this);
         const { title } = this.state;
-        const { email } = this.props;
-        goalRef.push({email, title});
-
+        const { email } = this.props.user;
+        goalRef.push({ email, title });
     }
 
-    render(){
+    render() {
         return (
             <div className="forminline">
                 <div className="form-group">
@@ -27,10 +26,10 @@ class AddGoal extends Component {
                         type="text"
                         placeholder="Add a goal"
                         className="form-control"
-                        style={{marginRight: '5px'}}
-                        onChange={ event => this.setState({title:event.target.value}) }
+                        style={{ marginRight: '5px' }}
+                        onChange={event => this.setState({ title: event.target.value })}
                     />
-                    <button className="btn btn-success" onClick={ () => this.addGoal() }>Submit</button>
+                    <button className="btn btn-success" onClick={() => this.addGoal()}>Submit</button>
                 </div>
             </div>
         )
@@ -38,12 +37,12 @@ class AddGoal extends Component {
 }
 
 
-function mapStateToProps (state) {
-    const {email} = state;
+function mapStateToProps(state) {
+    const { user } = state;
     return {
-        email
+        user
     };
 }
 
 
-export default connect(mapStateToProps,null)(AddGoal);
+export default connect(mapStateToProps, null)(AddGoal);
